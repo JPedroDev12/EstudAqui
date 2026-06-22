@@ -20,5 +20,5 @@ O **EstudaAqui** é uma landing page desenvolvida para apresentar nosso catálog
 ## 🛠️ Tecnologias Utilizadas
 
 * **HTML5:** Estrutura da página.
-* **CSS3:** Estilização e layout (Flexbox/Grid).
-* **JavaScript (opcional):** Apenas para a dinâmica de filtrar os cursos na tela.
+* **CSS3:** Estilização e layout.
+* **JavaScript dinâmica de filtrar os cursos na tela.
