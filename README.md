@@ -21,4 +21,4 @@ O **EstudaAqui** é uma landing page desenvolvida para apresentar nosso catálog
 
 * **HTML5:** Estrutura da página.
 * **CSS3:** Estilização e layout.
-* **JavaScript dinâmica de filtrar os cursos na tela.
+* **JavaScript** dinâmica de filtrar os cursos na tela.
