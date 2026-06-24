@@ -23,6 +23,7 @@ CREATE TABLE cursos (
     modalidade ENUM('Presencial', 'Online') NOT NULL,
     descricao TEXT,
     capa VARCHAR(255) DEFAULT NULL,
+    ativo TINYINT(1) NOT NULL DEFAULT 1,
     FOREIGN KEY (usuario_id)   REFERENCES usuarios(id),
     FOREIGN KEY (categoria_id) REFERENCES categorias(id)
 );

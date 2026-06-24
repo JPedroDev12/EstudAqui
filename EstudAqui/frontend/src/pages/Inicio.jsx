@@ -9,7 +9,6 @@ function Inicio() {
     <div>
       <HeaderVer />
 
-      {/* Banner promocional - só aparece para visitantes */}
       {!usuario && (
         <div className="bg-yellow-100 flex flex-col items-center py-6 gap-3">
           <span className="text-yellow-500 font-bold text-4xl">30% OFF</span>
@@ -24,7 +23,6 @@ function Inicio() {
         </div>
       )}
 
-      {/* Painel do usuário logado */}
       {usuario && (
         <div className="bg-blue-50 border-b border-blue-200 px-10 py-6">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
@@ -46,7 +44,6 @@ function Inicio() {
         </div>
       )}
 
-      {/* Sobre nós */}
       <div className="flex flex-col items-center gap-4 p-10 text-center max-w-3xl mx-auto">
         <h2 className="font-bold text-xl text-gray-800">
           EstudAqui! - Sobre nós

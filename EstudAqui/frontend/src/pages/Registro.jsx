@@ -29,7 +29,6 @@ function Registro() {
     }
     setCarregando(true)
     try {
-      // Registrar
       const resReg = await fetch('http://localhost:3000/usuarios/registro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -40,7 +39,6 @@ function Registro() {
         setErro(dataReg.erro || 'Erro ao cadastrar')
         return
       }
-      // Login automático após cadastro
       const resLogin = await fetch('http://localhost:3000/usuarios/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
