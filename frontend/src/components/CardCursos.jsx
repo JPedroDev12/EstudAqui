@@ -4,10 +4,8 @@ function CardCursos({curso}) {
     return (
       <div className="flex justify-between m-5 w-50 rounded-2xl bg-gray-300 shadow-2xl p-b-2">
         {" "}
-        {/*Card curso*/}
         <div className="flex flex-col">
           {" "}
-          {/* Organiza Conteudo do card */}
           <img
             src={curso.img}
             className="h-40 w-full object-cover rounded-t-2xl"
