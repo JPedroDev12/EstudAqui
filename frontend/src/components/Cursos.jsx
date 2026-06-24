@@ -3,7 +3,6 @@ import GSA from "../assets/educacao-especial.png";
 import SGA from "../assets/secretaria-escolar.png";
 import GAS from "../assets/powerpoint-basico.png"
 
-// Colocando Cursos
 const Cursos = [
   {
     id: 1,
