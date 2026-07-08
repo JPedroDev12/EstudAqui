@@ -21,6 +21,15 @@ function HeaderVer() {
         <ul className="flex gap-10">
           <li><Link to="/sobrenos">Sobre Nós</Link></li>
           <li><Link to="/">Início</Link></li>
+          {(usuario?.cargo === 'Professor' || usuario?.cargo === 'Administrador') && (
+            <>
+              <li><Link to="/meus-cursos" className="text-yellow-300">Meus Cursos</Link></li>
+              <li><Link to="/criar-curso" className="text-yellow-300">+ Curso</Link></li>
+            </>
+          )}
+          {usuario?.cargo === 'Administrador' && (
+            <li><Link to="/admin" className="text-orange-300">Admin</Link></li>
+          )}
         </ul>
       </nav>
       <div className="flex gap-4 items-center">

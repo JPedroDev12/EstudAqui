@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { listar, buscarPorId, criar, atualizar, remover } from '../controllers/cursosController.js';
+import { autenticar } from '../middlewares/autenticar.js';
 
 const router = Router();
 

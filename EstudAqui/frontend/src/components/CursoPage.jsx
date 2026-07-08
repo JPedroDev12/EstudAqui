@@ -1,15 +1,31 @@
 import { useParams, Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 import Header from "./Header"
-import Cursos from "./Cursos"
 
 function CursoPage() {
   const { id } = useParams()
+  const [curso, setCurso] = useState(null)
+  const [erro, setErro] = useState(null)
+  const [carregando, setCarregando] = useState(true)
 
-  const curso = Cursos.find( // ele vai procurar o curso de acordo com o id, e com isso ele vai pegar tudo dentro daquele curso e preencher o nome, descricao e img
-    (curso) => curso.id === Number(id)
-  )
+  useEffect(() => {
+    fetch(`http://localhost:3000/cursos/${id}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Curso não encontrado")
+        return res.json()
+      })
+      .then((data) => {
+        setCurso(data)
+        setCarregando(false)
+      })
+      .catch((err) => {
+        setErro(err.message)
+        setCarregando(false)
+      })
+  }, [id])
 
-  if (!curso) return <div><Header /><p className="p-5 text-gray-600">Curso não encontrado.</p></div>
+  if (carregando) return <div><Header /><p className="p-5 text-gray-600">Carregando...</p></div>
+  if (erro || !curso) return <div><Header /><p className="p-5 text-gray-600">Curso não encontrado.</p></div>
 
   return (
     <div>
@@ -20,14 +36,30 @@ function CursoPage() {
           <span className="text-gray-600 text-2xl font-bold">
             {curso.descricao}
           </span>
+          {curso.categoria && (
+            <span className="text-sm text-blue-600 font-semibold">
+              Categoria: {curso.categoria}
+            </span>
+          )}
+          {curso.modalidade && (
+            <span className="text-sm text-gray-500">
+              Modalidade: {curso.modalidade}
+            </span>
+          )}
         </div>
         <div className="items-center flex flex-col gap-3 bg-gray-300 pb-3 rounded-2xl">
-          <img
-            src={curso.img}
-            alt=""
-            className="w-120 h-auto rounded-t-2xl relative"
-          />
-          <span className="absolute top-30 right-6 bg-green-500 border-3 border-green-800 text-white font-bold p-1 text-2xl rounded-2xl">
+          {curso.capa ? (
+            <img
+              src={curso.capa}
+              alt={curso.nome}
+              className="w-120 h-auto rounded-t-2xl"
+            />
+          ) : (
+            <div className="w-120 h-64 rounded-t-2xl bg-gray-400 flex items-center justify-center">
+              <span className="text-gray-600 text-lg">Sem imagem</span>
+            </div>
+          )}
+          <span className="bg-green-500 border-3 border-green-800 text-white font-bold p-1 text-2xl rounded-2xl">
             Gratuito
           </span>
           <Link
@@ -39,7 +71,7 @@ function CursoPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default CursoPage
