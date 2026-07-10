@@ -25,5 +25,30 @@ function App() {
     </Routes>
   )
 }
+import { useEffect, useState } from 'react';
 
-export default App
+// Se estiver no computador, usa localhost. Se estiver no Render, use a URL do seu Web Service.
+const API_URL = import.meta.env.PROD 
+  ? 'https://estudaqui-gdvq.onrender.com' // VEJA NO SEU PAINEL SE ESSE É O LINK EXATO DO BACKEND
+  : 'http://localhost:3000';
+
+function App() {
+  const [dados, setDados] = useState('');
+
+  useEffect(() => {
+    // Faz a chamada para o backend utilizando a URL correta
+    fetch(`${API_URL}/api`)
+      .then(response => response.json())
+      .then(data => setDados(data.mensagem))
+      .catch(err => console.error("Erro ao conectar com o backend:", err));
+  }, []);
+
+  return (
+    <div>
+      <h1>EstudAqui</h1>
+      <p>Resposta do servidor: {dados || "Carregando..."}</p>
+    </div>
+  );
+}
+
+export default App;
