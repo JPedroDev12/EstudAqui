@@ -1,5 +1,20 @@
-import app from './src/app.js';
+const express = require('express');
+const cors = require('cors');
+const app = express();
 
-app.listen(3000, () => {
-  console.log('Servidor rodando em http://localhost:3000/');
+
+app.use(cors({
+    origin: '*' 
+}));
+
+app.use(express.json());
+
+
+app.get('/api', (req, res) => {
+    res.json({ mensagem: "Olá do backend no Render!" });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
